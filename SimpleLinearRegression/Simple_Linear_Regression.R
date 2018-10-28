@@ -1,25 +1,23 @@
-#Data preprocessing
+# Simple Linear Regression
 
-#importing the dataset
+# Importing the dataset
 dataset = read.csv('Salary_Data.csv')
 
-#Splitting the dataset into the training set and test set
-#install.packages('caTools') 
-library(caTools) 
-set.seed(123) 
+# Splitting the dataset into the Training set and Test set
+# install.packages('caTools')
+library(caTools)
+set.seed(123)
 split = sample.split(dataset$Salary, SplitRatio = 2/3)
-training_set=subset(dataset, split == TRUE)
-test_set=subset(dataset, split == FALSE)
+training_set = subset(dataset, split == TRUE)
+test_set = subset(dataset, split == FALSE)
 
-# #Feature Scaling
-# training_set[,2:3] = scale(training_set[,2:3])
-# test_set[,2:3] = scale(test_set[,2:3])
+# Feature Scaling
+# training_set = scale(training_set)
+# test_set = scale(test_set)
 
 # Fitting Simple Linear Regression to the Training set
 regressor = lm(formula = Salary ~ YearsExperience,
                data = training_set)
-
-#WPISANIE summmary(regressor) W KONSOLI POWODUJE WYPISANIE WAŻNYCH INFORMACJI O REGRESSORZE
 
 # Predicting the Test set results
 y_pred = predict(regressor, newdata = test_set)
