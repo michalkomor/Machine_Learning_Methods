@@ -27,3 +27,5 @@ regressor = lm(formula = Profit ~ .,
 # Predicting the Test set results
 y_pred = predict(regressor, newdata = test_set)
 y_pred
+
+#Building the optimal model using Backward Elimination
